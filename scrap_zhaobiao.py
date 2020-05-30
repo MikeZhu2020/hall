@@ -53,37 +53,11 @@ def url_search():
 		send_mail('检索 '+str_search+" 的结果为 0")
 
 
-def sendmail():
-	mail_host = "smtp.21cn.com"
-	mail_user = "mzhu@21cn.com"
-	mail_password = "3931"
-
-	sender = 'mzhu@21cn.com'
-	mail_to = ['mzhu@21cn.com']
-
-	message = MIMEText('python testing of sending mail','plain','utf-8')
-	message['From'] = Header("mzhu@21cn.com",'utf-8')
-	message['To'] = Header("test",'utf-8')
-
-	subject = 'Python smtp mail test'
-	message['Subject'] = Header(subject,'utf-8')
-
-	try:
-		smtpobj = smtplib.SMTP()
-		smtpobj.connect(mail_host,25)
-		smtpobj.login(mail_user,mail_password)
-		smtpobj.sendmail(sender,mail_to,message.as_string())
-		print("邮件发送成功")
-
-	except:
-		print("无法发送邮件")
-
-
 def send_mail(subject):
 	#设置服务器，用户名、口令以及邮箱的后缀
 	mail_host="smtp.163.com"
 	mail_user="mzhugz"
-	mail_pass="GYQCRTRWIYWBOFXJ"
+	mail_pass="********"   #authorized password
 	mail_postfix="163.com"
 	me = mail_user+"<"+mail_user+"@"+mail_postfix+">"
 
@@ -106,51 +80,6 @@ def send_mail(subject):
 		#print '2'
 		print('failed')
 		# return False
-
-
-def to_mail():
-	import smtplib
-	from email.mime.text import MIMEText
-	from email.header import Header
-	 
-	# 第三方 SMTP 服务
-	mail_host="smtp.21cn.com"  #设置服务器
-	mail_user="mzhu@21cn.com"    #用户名
-	mail_pass="3931"   #口令
-	 
-	 
-	sender = 'mzhu@21cn.com'
-	receivers = ['38945677@qq.com','mzhu@21cn.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
-	 
-	message = MIMEText('Python 邮件发送测试...', 'plain', 'utf-8')
-	# message['From'] = Header("菜鸟教程", 'utf-8')
-	# message['To'] =  Header("测试", 'utf-8')
-	 
-	subject = 'Python SMTP 邮件测试'
-	message['Subject'] = Header(subject, 'utf-8')
-	 
-	 
-	try:
-		smtpObj = smtplib.SMTP(mail_host,25)
-		smtpObj.connect(mail_host, 25)    # 25 为 SMTP 端口号
-		smtpObj.login(mail_user,mail_pass)
-		smtpObj.sendmail(sender, receivers, message.as_string())
-		print("邮件发送成功")
-	except smtplib.SMTPException:
-		print("Error: 无法发送邮件")
-
-
-
-def mail():
-	try:
-
-		yag = yagmail.SMTP(user='mzhu@21cn.com', password='3931', host='smtp.21cn.com')
-		contents = 'this is a mail send by phthon.'  # 正文内容
-		mail_to = 'mzhu@21cn.com'
-		yag.send(mail_to, 'subject：hello World', contents)
-		print('success')
-	except:
-		print('failed')
 
 url_search()
 
